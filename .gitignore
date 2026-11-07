@@ -31,3 +31,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# private docs & notes (keep only README.md)
+*.md
+!README.md
+CV_*.md
+HERO_DOT_EFFECT.md
+
