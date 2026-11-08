@@ -6,7 +6,6 @@ import Experience from "@/components/Experience";
 import WhyHireMe from "@/components/WhyHireMe";
 import Portfolio from "@/components/Portfolio";
 import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <Experience />
       <WhyHireMe />
       <CTA />
-      <Footer />
     </main>
   );
 }
