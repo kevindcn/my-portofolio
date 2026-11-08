@@ -1,208 +1,166 @@
-# Raka.dev — Website Portofolio (Tech Blue Edition)
+# Kevin Daniel Christio — Personal Portfolio Website
 
-Website portofolio pribadi bergaya **tech/futuristic biru**, terinspirasi dari
-layout referensi desain (hero, layanan, timeline pengalaman, why-hire-me,
-portofolio, testimoni, CTA, blog, footer) tetapi dengan palet warna, tipografi,
-dan elemen signature yang berbeda: **biru elektrik + navy gelap + aksen cyan**,
-lengkap dengan micro-interaction dan animasi scroll.
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-11.0-FF69B4?style=for-the-badge&logo=framer)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)
 
-Dibangun dengan **Next.js 14 (App Router) + TypeScript + Tailwind CSS +
-Framer Motion**, siap di-deploy ke **Vercel**.
-
----
-
-## 1. Ringkasan Desain
-
-| Token | Nilai | Kegunaan |
-|---|---|---|
-| `ink` | `#050B18` | Background utama (navy gelap) |
-| `surface` / `surface2` | `#0A1428` / `#0F1D38` | Panel & kartu |
-| `border` | `#1B2A4A` | Garis tipis / outline |
-| `primary` | `#2F6BFF` | Aksen biru elektrik (CTA, ikon, glow) |
-| `cyan` | `#22D3EE` | Aksen sinyal / highlight sekunder |
-| `ice` | `#E7EEFF` | Teks utama |
-| `muted` | `#8CA0C9` | Teks sekunder |
-
-- **Font display:** Space Grotesk (judul, tegas & geometris — kesan teknikal)
-- **Font body:** Inter (teks isi, mudah dibaca)
-- **Font mono:** JetBrains Mono (label, tag, angka — nuansa "kode")
-- **Elemen signature:** lingkaran orbit di Hero (avatar dikelilingi badge
-  skill yang melayang) + grid garis halus ala "circuit board" di background
-  + efek glow biru pada tombol dan kartu saat hover.
-
-Semua token warna diatur terpusat di `tailwind.config.ts`, jadi mengganti
-nuansa warna cukup dilakukan di satu tempat.
+Website portofolio pribadi modern, responsif, dan interaktif milik **Kevin Daniel Christio Nainggolan** — *Creative Product Designer & UI/UX Specialist*. Dibuat dengan estetika **Dark Minimalist** dipadukan dengan aksen **Vibrant Orange (`#ff6b00`)**, animasi transisi halus dengan **Framer Motion**, serta siap dideploy secara otomatis ke **Vercel**.
 
 ---
 
-## 2. Struktur Proyek
+## 🎨 Desain & Identitas Visual
 
-```
+- **Palet Warna Utama**:
+  - `Background`: Pitch Dark (`#070709` / `#09090b`)
+  - `Surface / Cards`: Charcoal Zinc (`#121215` / `#18181b`)
+  - `Primary Accent`: Vibrant Electric Orange (`#ff6b00` & `#ea580c`)
+  - `Borders & Dividers`: Subtle Dark Zinc (`#27272a` / `rgba(255,255,255,0.08)`)
+  - `Typography`: Pure Ice White (`#fafafa`) & Muted Grey (`#a1a1aa`)
+- **Tipografi**:
+  - **Heebo**: Font display & heading tegas, modern, dan berkarakter (weights: 400–900).
+  - **Barlow**: Font body text yang bersih, proporsional, dan nyaman dibaca.
+- **Elemen Karakteristik**:
+  - Komposisi tipografi kreatif pada Hero section (*"Creative Product Designer"*).
+  - Foto profil dalam bingkai kurva artistik dengan floating badge (*Frontend Developer*, *UI/UX Designer*, *Product Designer*, *Figma*).
+  - Ambient radial glow oranye lembut di latar belakang.
+  - Section *Discuss* terpusat dengan garis pembatas minimalis dan *brand signature*.
+
+---
+
+## ✨ Fitur & Struktur Halaman
+
+Website ini dirancang secara modular dan responsif pada setiap layarnya:
+
+1. **Sticky Navigation (`Navbar.tsx`)**:
+   - Menu navigasi dengan backdrop blur dinamis saat scroll.
+   - Drawer menu navigasi khusus tampilan mobile.
+   - Direct button *"Let's Talk"* yang langsung mengarah ke section kontak.
+2. **Hero Section (`Hero.tsx`)**:
+   - Headline interaktif, bio ringkas, dan tombol aksi ganda (*View Portfolio* & *Let's Collaborate*).
+   - Showcase foto profil presisi dengan floating pill badges.
+3. **Skills Marquee (`SkillsMarquee.tsx`)**:
+   - Animasi strip berjalan tanpa putus (*infinite marquee*) menampilkan keahlian: Figma, UI/UX, Next.js, React, Tailwind CSS, TypeScript, Prototyping, Design System, dll.
+4. **Services / Layanan (`Services.tsx`)**:
+   - Kartu layanan mendalam: UI/UX Design, Design System & Tokens, dan Frontend Prototyping.
+5. **Portfolio & Studi Kasus (`Portfolio.tsx`)**:
+   - Filter kategori proyek interaktif (*All*, *UI/UX*, *Frontend*, *Fullstack*, *Design*).
+   - Carousel slider preview proyek otomatis dan interaktif.
+   - Halaman detail studi kasus dinamis dengan rute `/projects/[slug]`.
+6. **Timeline Pengalaman (`Experience.tsx`)**:
+   - Rekam jejak profesional dan magang di instansi terkemuka (PT Pertamina Geothermal Energy Tbk, Setjen DPR RI Pustekinfo, dll.).
+7. **What I Bring to Every Project (`WhyHireMe.tsx`)**:
+   - Layout grid 12-kolom terpusat menampilkan 4 pilar kompetensi utama, metrik pencapaian (5+ Projects & Designs, 4+ Roles), dan tombol kolaborasi.
+8. **Contact & Footer Minimalis (`CTA.tsx`)**:
+   - Section terpusat dengan pill badge *"Let's Connect"*.
+   - Tombol LinkedIn terhubung langsung ke profil.
+   - Tombol email pintar anti-duplikasi penerima di Outlook/Gmail.
+   - Footer garis horizontal panjang dengan tanda tangan identitas di pojok kiri bawah.
+
+---
+
+## 📂 Struktur Direktori Proyek
+
+```text
 portfolio/
 ├── app/
-│   ├── layout.tsx        # Root layout, font, metadata SEO
-│   ├── page.tsx           # Menyusun seluruh section homepage
-│   └── globals.css        # Base style & utility class (btn, card, dst)
+│   ├── layout.tsx            # Root layout, konfigurasi Heebo/Barlow, dan SEO metadata
+│   ├── page.tsx              # Halaman utama (menyusun seluruh section)
+│   ├── globals.css           # Styling dasar, utility classes, dan custom keyframes
+│   └── projects/
+│       ├── page.tsx          # Halaman indeks seluruh proyek
+│       └── [slug]/page.tsx   # Halaman detail studi kasus proyek dinamis
 ├── components/
-│   ├── Navbar.tsx          # Navigasi sticky + menu mobile
-│   ├── Hero.tsx             # Hero + elemen signature orbit
-│   ├── SkillsMarquee.tsx    # Strip skill berjalan (marquee)
-│   ├── Services.tsx         # 3 kartu layanan utama
-│   ├── Experience.tsx       # Timeline pengalaman kerja
-│   ├── WhyHireMe.tsx        # Alasan bekerja sama + statistik
-│   ├── Portfolio.tsx        # Grid proyek unggulan
-│   ├── Testimonials.tsx     # Testimoni klien
-│   ├── CTA.tsx               # Form kontak / ajakan diskusi
-│   ├── Blog.tsx               # Daftar tulisan terbaru
-│   └── Footer.tsx             # Footer + newsletter
-├── public/                 # Aset statis (favicon, gambar, dsb.)
-├── tailwind.config.ts       # Token warna, font, animasi kustom
-├── next.config.mjs
+│   ├── Navbar.tsx            # Navigasi sticky desktop & mobile
+│   ├── Hero.tsx              # Hero banner utama
+│   ├── SkillsMarquee.tsx     # Infinite skills ticker
+│   ├── Services.tsx          # Kartu layanan desain & frontend
+│   ├── Portfolio.tsx         # Showcase proyek dengan filter & carousel
+│   ├── Experience.tsx        # Timeline riwayat kerja & magang
+│   ├── WhyHireMe.tsx         # Nilai tambah & statistik proyek
+│   ├── CTA.tsx               # Section ajakan diskusi + footer garis minimalis
+│   └── ScrollToTop.tsx       # Floating scroll-to-top indicator
+├── lib/
+│   └── data.ts               # Database lokal proyek & detail studi kasus
+├── public/
+│   ├── projects/             # Aset gambar proyek, mockup, dan ikon
+│   └── profile-tight.png     # Foto profil cutout berkualitas tinggi
+├── tailwind.config.ts        # Konfigurasi tema warna, font, dan animasi
+├── next.config.mjs           # Konfigurasi Next.js & remote image domain
 ├── package.json
-└── README.md                # Dokumen ini
+└── README.md
 ```
 
 ---
 
-## 3. Menjalankan Secara Lokal
+## 🚀 Menjalankan Secara Lokal
 
-Prasyarat: **Node.js 18.18+** (disarankan 20 LTS) dan npm.
+### Prasyarat
+- **Node.js** v18.18 atau lebih baru (disarankan Node.js 20 LTS)
+- **npm**, **yarn**, atau **pnpm**
 
+### Langkah Instalasi
 ```bash
-# 1. Masuk ke folder proyek
-cd portfolio
+# 1. Clone repositori
+git clone https://github.com/kevindcn/my-portofolio.git
 
-# 2. Install dependency
+# 2. Masuk ke folder proyek
+cd my-portofolio
+
+# 3. Install seluruh dependencies
 npm install
 
-# 3. Jalankan mode pengembangan
+# 4. Jalankan server pengembangan
 npm run dev
 ```
 
-Buka **http://localhost:3000** di browser. Perubahan pada file akan
-langsung ter-refresh (hot reload).
+Buka [http://localhost:3000](http://localhost:3000) pada browser Anda.
 
-Perintah lain yang tersedia:
-
+### Perintah Lain yang Tersedia
 ```bash
-npm run build   # build produksi
-npm run start   # jalankan hasil build produksi secara lokal
-npm run lint    # cek linting
+npm run build   # Membangun aplikasi untuk produksi (Next.js production build)
+npm run start   # Menjalankan aplikasi hasil build secara lokal
+npm run lint    # Mengecek kualitas kode dengan ESLint
 ```
 
-> Catatan: proyek menggunakan `next/font/google` (Space Grotesk, Inter,
-> JetBrains Mono) yang butuh koneksi internet saat proses build pertama kali
-> untuk mengunduh file font — pastikan mesin build (lokal maupun Vercel)
-> memiliki akses internet normal.
-
 ---
 
-## 4. Personalisasi Konten
+## ☁️ Deployment ke Vercel
 
-Semua teks masih berupa **konten contoh (dummy)** yang perlu diganti sesuai
-data Anda:
+Proyek ini telah dikonfigurasi optimal untuk deployment instan di platform **Vercel**:
 
-1. **Identitas & Hero** → `components/Hero.tsx`
-   Ganti nama, judul profesi, deskripsi singkat, dan badge skill (React,
-   Node.js, dst).
-2. **Layanan** → `components/Services.tsx`, array `services`.
-3. **Pengalaman kerja** → `components/Experience.tsx`, array `timeline`.
-4. **Kenapa memilih saya & statistik** → `components/WhyHireMe.tsx`.
-5. **Proyek portofolio** → `components/Portfolio.tsx`, array `projects`
-   (tambahkan gambar asli dengan `next/image` bila perlu — ganti blok ikon
-   inisial dengan `<Image src="/proyek/nama.png" ... />`).
-6. **Testimoni** → `components/Testimonials.tsx`.
-7. **Tulisan blog** → `components/Blog.tsx`.
-8. **Kontak, sosial media, footer** → `components/Footer.tsx` dan
-   `components/CTA.tsx`.
-9. **Judul tab & meta SEO** → `app/layout.tsx` (`metadata`).
-10. **Warna & font** → `tailwind.config.ts` (bagian `theme.extend`).
-
-### Menghubungkan form kontak ke email sungguhan
-
-Form di `components/CTA.tsx` saat ini hanya menyimpan status "terkirim" di
-state lokal (tidak benar-benar mengirim email). Untuk membuatnya fungsional,
-pilih salah satu:
-
-- **Resend** (https://resend.com) + Next.js Route Handler (`app/api/contact/route.ts`)
-- **Formspree** (https://formspree.io) — cukup arahkan `action` form ke endpoint mereka
-- **EmailJS** — kirim email langsung dari client
-
-Contoh minimal dengan Route Handler + Resend tersedia di komentar
-`// TODO` pada `CTA.tsx` sebagai titik awal.
-
----
-
-## 5. Deploy ke Vercel
-
-### Opsi A — Lewat Dashboard Vercel (paling mudah)
-
-1. Push folder proyek ini ke repository GitHub/GitLab/Bitbucket:
+1. Pastikan seluruh perubahan kode telah di-push ke GitHub:
    ```bash
-   git init
    git add .
-   git commit -m "Initial commit: tech blue portfolio"
-   git branch -M main
-   git remote add origin <URL_REPO_ANDA>
-   git push -u origin main
+   git commit -m "feat: updates"
+   git push origin main
    ```
-2. Buka https://vercel.com → **Add New... → Project**.
-3. Pilih repository yang baru di-push.
-4. Vercel otomatis mendeteksi framework **Next.js** — biarkan pengaturan
-   default (`Build Command: next build`, `Output: .next`).
-5. Klik **Deploy**. Setelah selesai, Anda akan mendapat link publik seperti
-   `https://nama-proyek.vercel.app` yang siap dibagikan.
-6. (Opsional) Tambahkan domain kustom di **Project → Settings → Domains**.
-
-### Opsi B — Lewat Vercel CLI
-
-```bash
-npm install -g vercel
-vercel login
-cd portfolio
-vercel          # deploy preview
-vercel --prod   # deploy ke production
-```
-
-### Environment Variables (jika memakai layanan email seperti Resend)
-
-Tambahkan di **Project → Settings → Environment Variables** pada dashboard
-Vercel, misalnya:
-
-```
-RESEND_API_KEY=xxxxxxxxxxxxxxxx
-CONTACT_TO_EMAIL=hello@rakadev.id
-```
-
-Setiap kali environment variable diubah, lakukan **Redeploy** agar
-perubahan diterapkan.
+2. Kunjungi [vercel.com](https://vercel.com) dan login menggunakan akun GitHub.
+3. Klik **"Add New..."** ➔ **"Project"** ➔ pilih repositori **`my-portofolio`**.
+4. Vercel akan otomatis mendeteksi framework **Next.js** (biarkan pengaturan build default).
+5. Klik **"Deploy"**. Website akan siap diakses publik dalam 1–2 menit.
 
 ---
 
-## 6. Checklist Kualitas
+## 🛠️ Tech Stack & Ekosistem
 
-- [x] Responsif dari mobile (375px) sampai desktop lebar
-- [x] Navigasi keyboard & fokus terlihat (elemen interaktif bawaan HTML)
-- [x] Menghormati `prefers-reduced-motion` (animasi dinonaktifkan otomatis)
-- [x] Struktur semantik (`header`, `main`, `section`, `footer`)
-- [ ] Ganti seluruh konten dummy dengan data asli sebelum go-live
-- [ ] Tambahkan gambar/screenshot proyek nyata di bagian Portofolio
-- [ ] Hubungkan form kontak ke layanan email sungguhan
-- [ ] Tambahkan `favicon.ico` dan gambar Open Graph di folder `public/`
-
----
-
-## 7. Tech Stack
-
-- [Next.js 14](https://nextjs.org/) (App Router)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Framer Motion](https://www.framer.com/motion/) — animasi & scroll reveal
-- [Lucide React](https://lucide.dev/) — ikon
-- Deploy target: [Vercel](https://vercel.com/)
+- **Framework**: [Next.js 14 (App Router)](https://nextjs.org/)
+- **Bahasa**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animasi & Interaksi**: [Framer Motion](https://www.framer.com/motion/)
+- **Icon Pack**: [Lucide React](https://lucide.dev/)
+- **Optimasi Gambar & Font**: `next/image` & `next/font/google`
+- **Hosting & CI/CD**: [Vercel](https://vercel.com/)
 
 ---
 
-Selamat membangun! Jika ingin menambah halaman detail proyek (`/proyek/[slug]`),
-integrasi CMS (Contentful/Sanity) untuk blog, atau dark/light mode toggle,
-struktur App Router di proyek ini sudah siap dikembangkan ke arah sana.
+## 📬 Kontak & Hubungan Profesional
+
+- **Nama**: Kevin Daniel Christio Nainggolan
+- **Email**: [kevindanielnainggolan@gmail.com](mailto:kevindanielnainggolan@gmail.com)
+- **LinkedIn**: [linkedin.com/in/kevin-daniel-christio](https://www.linkedin.com/in/kevin-daniel-christio/)
+- **GitHub**: [github.com/kevindcn](https://github.com/kevindcn)
+
+---
+*© 2026 Kevin Daniel Christio Nainggolan. All rights reserved.*
