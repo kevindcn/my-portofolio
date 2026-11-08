@@ -120,12 +120,8 @@ export default function Hero() {
           {/* Orange ambient glow behind shape */}
           <div className="absolute w-[85%] h-[85%] rounded-full bg-[#ff6b00]/20 blur-[100px] pointer-events-none -z-10" />
 
-          {/* Floating Frame Container with Photo & Badges */}
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[450px] aspect-[515/582]"
-          >
+          {/* Frame Container with Photo & Badges (Static - no floating animation) */}
+          <div className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[450px] aspect-[515/582]">
             {/* Orange Frame as Backdrop */}
             <div className="relative w-full h-full z-0">
               <Image
@@ -259,7 +255,7 @@ export default function Hero() {
                 </svg>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
